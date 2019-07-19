@@ -1,0 +1,29 @@
+h1{
+    border: solid rgb(237, 226, 190);
+    background: rgb(233,84,77);
+    text-align:center;
+    color:rgb(237, 226, 190);
+    
+
+}
+body{
+    background-color: black
+}
+
+h2{
+    color:rgb(237, 226, 190);
+}
+
+#link{
+    color: rgb(237, 226, 190)
+}
+
+p{
+    color:rgb(100,200,200);
+}
+
+ol{
+    color:rgb(100,200,200);
+}
+
+104 209 195
