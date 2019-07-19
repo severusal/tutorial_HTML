@@ -3,7 +3,8 @@ h1{
     background: rgb(233,84,77);
     text-align:center;
     color:rgb(237, 226, 190);
-    
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
 
 }
 body{
