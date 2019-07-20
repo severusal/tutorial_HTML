@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>H2 Computing Sign up Form</title>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <h1>H2 Computing Sign up Form</h1>
+        
+        <p>Please enter your particulars below.</p>
+        
+
+        <form>
+            
+            <table>
+                <tr>
+                    <td>
+                        <label for="first_name">First Name:</label>
+                    </td>
+                    <td>
+                        <input
+                            name="first_name"
+                            id="first_name"
+                            class="input"
+                            type="text"
+                            placeholder="First Name"
+                        />
+                    </td>
+                    <td>
+                        <label for="last_name">Last Name:</label>
+                    </td>
+                    <td>
+                        <input
+                            class="input"
+                            name="last_name"
+                            id="last_name"
+                            type="text"
+                            placeholder="Last Name"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">Email:</label>
+                    </td>
+                    <td>
+                        <input
+                            name="email"
+                            class="input"
+                            id="email"
+                            type="text"
+                            placeholder="name@email.com"
+                        />
+                    </td>
+                    <td>
+                        <label for="contect">Contect:</label>
+                    </td>
+                    <td>
+                        <input
+                            name="contect"
+                            class="input"
+                            id="contect"
+                            type="text"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="class">Class:</label>
+                    </td>
+                    <td>
+                        <input
+                            name="class"
+                            id="class"
+                            class="input"
+                            type="text"
+                        />
+                    </td>
+                    <td>
+                        <label>Gender:</label>
+                    </td>
+                    <td class="input">
+                        <select>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Date of Birth:</label>
+                    </td>
+                    <td>
+                        <input class="input" type="date" name="dob">
+                    </td>
+                </tr>
+            </table>
+
+            <p>
+                
+                
+                Subject Combination
+                <br/>
+                <input type="radio" name="sub_comb" id="1st"/>
+                <label for="1st">P CP M E</label>
+                <br/>
+                <input type="radio" name="sub_comb" id="2nd"/>
+                <label for="2nd">C CP M E</label>
+                <br/>
+                <input type="radio" name="sub_comb" id="others"/>
+                <label for="others">Other:</label>
+                <input name="sub_comb" id="others" type="text"/>
+            </p>
+
+
+            
+
+
+            
+            <br/>
+            
+
+        </form>
+            <a href="response_form.html"><input id="submitButton" type="submit"></a>
+    </body>
+</html>
