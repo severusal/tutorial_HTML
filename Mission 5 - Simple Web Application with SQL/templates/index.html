@@ -12,12 +12,19 @@
                 <th>Concert Booking ID</th>
                 <th>Date</th>
                 <th>Venue Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             {% for record in all_bookings %}
                 <tr>
                     <td align="center">{{record.get_booking_id()}}</td>
                     <td align="center">{{record.get_date()}}</td>
                     <td align="center">{{record.get_venue_name()}}</td>
+                    <td>
+                        <a href="{{ url_for("edit_concert_booking", booking_id=record.get_booking_id()) }}">Edit</a>
+                    </td>
+                    <td>Delete</td>
+
                 </tr>
             {% endfor %}
         </table>
