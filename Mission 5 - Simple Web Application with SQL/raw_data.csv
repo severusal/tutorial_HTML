@@ -1,11 +1,11 @@
 VenueName;VenueAddr;Postal;ConcertID;Date;BandName;NumberOfMembers;Headlining
-New York CBD Theatre;Fighting Street;649934;2016-009;2016-08-03;ComputerKids;3;1
-New York CBD Theatre;Fighting Street;649934;2016-009;2016-08-03;TheLegend;2;0
-New York CBD Theatre;Fighting Street;649934;2016-009;2016-08-03;Empire;8;1
-RVHS Hall;6 Boon Lay Avenue;649961;2017-255;2017-07-21;SLAYZ;5;1
-RVHS Auditorium;6 Boon Lay Avenue;649961;2017-192;2017-07-17;Unwritten;3;1
-RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;Indecisive;5;0
-RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;VOID;6;0
-RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;F4;4;0
-RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;SLAYZ;5;1
-RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;Empire;8;1
+New York CBD Theatre;Fighting Street;649934;2016-009;2016-08-03;ComputerKids;3;Y
+New York CBD Theatre;Fighting Street;649934;2016-009;2016-08-03;TheLegend;2;N
+New York CBD Theatre;Fighting Street;649934;2016-009;2016-08-03;Empire;8;Y
+RVHS Hall;6 Boon Lay Avenue;649961;2017-255;2017-07-21;SLAYZ;5;Y
+RVHS Auditorium;6 Boon Lay Avenue;649961;2017-192;2017-07-17;Unwritten;3;Y
+RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;Indecisive;5;N
+RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;VOID;6;N
+RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;F4;4;N
+RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;SLAYZ;5;Y
+RVHS Auditorium;6 Boon Lay Avenue;649961;2017-128;2017-04-21;Empire;8;Y
