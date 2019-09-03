@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Home Page
+        </title>
+    </head>
+    <body>
+        <h1 align="center">Home Page</h1>
+        <table width="100%" border="solid 1px">
+            <tr>
+                <th>Concert Booking ID</th>
+                <th>Date</th>
+                <th>Venue Name</th>
+            </tr>
+            {% for record in all_bookings %}
+                <tr>
+                    <td align="center">{{record.get_booking_id()}}</td>
+                    <td align="center">{{record.get_date()}}</td>
+                    <td align="center">{{record.get_venue_name()}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </body>
+</html>
