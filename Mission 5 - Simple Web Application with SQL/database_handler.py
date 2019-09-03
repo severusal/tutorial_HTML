@@ -37,11 +37,11 @@ def create_tables():
         execute_sql(sql)
 
 
-# create_tables()
+#create_tables()
 
 
 def process_data():
-    f = open("raw_data.csv", "r")
+    f = open("raw_data.csv.xls", "r")
     line = f.readline()  # header line, which contain no meaningful data
     line = f.readline()[:-1]  # read from 2nd line onwards, real data
     while line:
@@ -71,4 +71,4 @@ def process_data():
     f.close()
 
 
-# process_data()
+#process_data()
