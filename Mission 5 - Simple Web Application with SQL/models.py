@@ -6,9 +6,12 @@
 # Each class should have:
 # - necessary attributes
 # - static method responsible for table creation
-# - methods to generate SQL commands corresponding to insert/update/delete oprations
+# - methods to generate SQL commands corresponding to insert/update/delete operations
 
 # You may refer to the below skeleton for the Band class
+
+
+import sqlite3
 
 
 class Band:
@@ -28,14 +31,14 @@ class Band:
     def __str__(self):
         result = ""
         result += "Band Name: " + self._band_name
-        result += "Number of Members: " + self._no_of_members
+        result += "No of Members: " + self._no_of_members
         return result
 
     # SQLite: Create new table
     @staticmethod
     def create_table():
-        return """ 
-        CREATE TABLE IF NOT EXISTS Band(
+        return """
+        CREATE TABLE IF NOT EXISTS Band (
             BandName TEXT PRIMARY KEY,
             NoOfMembers INTEGER NOT NULL
         )
@@ -43,41 +46,44 @@ class Band:
 
     # SQLite: Create new record
     def create_new_record(self):
-        return """ 
+        return """
         INSERT INTO Band
         (BandName, NoOfMembers)
         VALUES
-        ('{}',{})
+        ('{}', {})
         """.format(self._band_name, self._no_of_members)
 
     # SQLite: Update record
     def update_record(self):
-        return"""
+        return """
         UPDATE Band SET
-        BandName = '{}',NoOfMembers = {}
+        BandName = '{}', NoOfMembers = {}
         WHERE BandName = '{}'
-        """.format(self._band_name, self._no_of_members, self._band_name)
+        """.format(self._band_name,
+                   self._no_of_members,
+                   self._band_name)
 
     # SQLite: Delete record
     def delete_record(self):
-        return"""
-        DELETE FROM Band 
+        return """
+        DELETE FROM Band
         WHERE BandName = '{}'
         """.format(self._band_name)
 
 
-
 class Venue:
-    def __init__(self, venue_name, address, postal):
+    # init attributes
+    def __init__(self, venue_name, addr, postal):
         self._venue_name = venue_name
-        self._address = address
+        self._addr = addr
         self._postal = postal
 
-    def get_vanue_name(self):
+    # insert necessary getters and setters
+    def get_venue_name(self):
         return self._venue_name
 
-    def get_address(self):
-        return self._address
+    def get_addr(self):
+        return self._addr
 
     def get_postal(self):
         return self._postal
@@ -86,56 +92,59 @@ class Venue:
     def __str__(self):
         result = ""
         result += "Venue Name: " + self._venue_name
-        result += "Address: " + self._address
+        result += "Address: " + self._addr
         result += "Postal: " + self._postal
         return result
 
     # SQLite: Create new table
     @staticmethod
     def create_table():
-        return """ 
-        CREATE TABLE IF NOT EXISTS Venue(
+        return """
+        CREATE TABLE IF NOT EXISTS Venue (
             VenueName TEXT PRIMARY KEY,
-            Address TEXT,
-            Postal INTEGER NOT NULL
+            Addr TEXT NOT NULL,
+            Postal INTEGER NOT NULL CHECK (Postal <= 999999)
         )
         """
 
     # SQLite: Create new record
     def create_new_record(self):
-        return """ 
+        return """
         INSERT INTO Venue
-        (VenueName, Address, Postal)
+        (VenueName, Addr, Postal)
         VALUES
         ('{}', '{}', {})
-        """.format(self._venue_name, self._address, self._postal)
+        """.format(self._venue_name, self._addr, self._postal)
 
     # SQLite: Update record
     def update_record(self):
-        return"""
+        return """
         UPDATE Venue SET
-        VenueName = '{}', Address = '{}', Postal = {}
+        VenueName = '{}', Addr = '{}', Postal = {}
         WHERE VenueName = '{}'
-        """.format(self._venue_name, self._address, self._postal, self._venue_name)
+        """.format(self._venue_name,
+                   self._addr,
+                   self._postal,
+                   self._venue_name)
 
     # SQLite: Delete record
     def delete_record(self):
-        return"""
-        DELETE FROM Venue 
+        return """
+        DELETE FROM Venue
         WHERE VenueName = '{}'
         """.format(self._venue_name)
 
 
-
-
 class ConcertBooking:
-    def __init__(self, booking_ID, date, venue_name):
-        self._booking_ID = booking_ID
+    # init attributes
+    def __init__(self, booking_id, date, venue_name):
+        self._booking_id = booking_id
         self._date = date
         self._venue_name = venue_name
 
-    def get_booking_ID(self):
-        return self._booking_ID
+    # insert necessary getters and setters
+    def get_booking_id(self):
+        return self._booking_id
 
     def get_date(self):
         return self._date
@@ -146,61 +155,64 @@ class ConcertBooking:
     # string output
     def __str__(self):
         result = ""
-        result += "Booking ID: " + self._booking_ID
+        result += "Booking ID: " + self._booking_id
         result += "Date: " + self._date
-        result += "Vanue Name: " + self._venue_name
+        result += "Venue Name: " + self._venue_name
         return result
 
     # SQLite: Create new table
     @staticmethod
     def create_table():
-        return """ 
-        CREATE TABLE IF NOT EXISTS ConcertBooking(
-            BookingID TEXT PRIMARY KEY,
-            Date TEXT,
-            VenueName TEXT,
+        return """
+        CREATE TABLE IF NOT EXISTS ConcertBooking (
+            BookingID INTEGER PRIMARY KEY AUTOINCREMENT,
+            Date TEXT NOT NULL,
+            VenueName TEXT NOT NULL,
             FOREIGN KEY (VenueName) REFERENCES Venue(VenueName)
         )
         """
 
     # SQLite: Create new record
     def create_new_record(self):
-        return """ 
+        return """
         INSERT INTO ConcertBooking
         (BookingID, Date, VenueName)
         VALUES
-        ('{}', '{}', '{}')
-        """.format(self._booking_ID, self._date, self._venue_name)
+        ({}, '{}', '{}')
+        """.format(self._booking_id, self._date, self._venue_name)
 
     # SQLite: Update record
     def update_record(self):
-        return"""
+        return """
         UPDATE ConcertBooking SET
-        BookingID = '{}', Date = '{}', VenueName = '{}'
-        WHERE BookingID = '{}'
-        """.format(self._booking_ID, self._date, self._venue_name, self._booking_ID)
+        BookingID = {}, Date = '{}', VenueName = '{}'
+        WHERE BookingID = {}
+        """.format(self._booking_id,
+                   self._date,
+                   self._venue_name,
+                   self._booking_id)
 
     # SQLite: Delete record
     def delete_record(self):
-        return"""
-        DELETE FROM ConcertBooking 
-        WHERE BookingID = '{}'
-        """.format(self._booking_ID)
-
-
+        return """
+        DELETE FROM ConcertBooking
+        WHERE BookingID = {}
+        """.format(self._booking_id)
 
 
 class BandBooking:
-    def __init__(self, band_name, booking_ID, headlining):
+    # init attributes
+    def __init__(self, booking_id, band_name, headlining):
+        self._booking_id = booking_id
         self._band_name = band_name
-        self._booking_ID = booking_ID
         self._headlining = headlining
+
+    # insert necessary getters and setters
+    def get_booking_id(self):
+        return self._booking_id
 
     def get_band_name(self):
         return self._band_name
-
-    def get_booking_ID(self):
-        return self._booking_ID
 
     def get_headlining(self):
         return self._headlining
@@ -208,60 +220,57 @@ class BandBooking:
     # string output
     def __str__(self):
         result = ""
+        result += "Booking ID: " + self._booking_id
         result += "Band Name: " + self._band_name
-        result += "Booking ID: " + self._booking_ID
-        result += "headlining: " + self._headlining
+        result += "Headlining: " + self._headlining
         return result
 
     # SQLite: Create new table
     @staticmethod
     def create_table():
-        return """ 
-        CREATE TABLE IF NOT EXISTS BandBooking(
+        return """
+        CREATE TABLE IF NOT EXISTS BandBooking (
+            BookingID INTEGER,
             BandName TEXT,
-            BookingID TEXT,
             Headlining INTEGER NOT NULL CHECK (Headlining = 1 OR Headlining = 0),
-            PRIMARY KEY (BandName, BookingID),
-            FOREIGN KEY (BandName) REFERENCES Band(BandName),
-            FOREIGN KEY (BookingID) REFERENCES ConcertBooking(BookingID)
-
+            PRIMARY KEY (BookingID, BandName),
+            FOREIGN KEY (BookingID) REFERENCES ConcertBooking(BookingID),
+            FOREIGN KEY (BandName) REFERENCES Band(BandName)
         )
         """
 
     # SQLite: Create new record
     def create_new_record(self):
-        return """ 
+        return """
         INSERT INTO BandBooking
-        (BandName, BookingID, Headlining)
+        (BookingID, BandName, Headlining)
         VALUES
-        ('{}', '{}', {})
-        """.format(self._band_name, self._booking_ID, self._headlining)
+        ({}, '{}', {})
+        """.format(self._booking_id, self._band_name, self._headlining)
 
     # SQLite: Update record
     def update_record(self):
-        return"""
+        return """
         UPDATE BandBooking SET
-        BandName = '{}', BookingID = '{}', Headlining = {}
-        WHERE BandName = '{}'
-        """.format(self._band_name, self._booking_ID, self._headlining, self._band_name)
+        BookingID = {}, BandName = '{}', Headlining = {}
+        WHERE BookingID = {} AND BandName = '{}'
+        """.format(self._booking_id,
+                   self._band_name,
+                   self._headlining,
+                   self._booking_id,
+                   self._band_name)
 
     # SQLite: Delete record
     def delete_record(self):
-        return"""
-        DELETE FROM BandBooking 
-        WHERE BandName = '{}'
-        """.format(self._band_name)
+        return """
+        DELETE FROM BandBooking
+        WHERE BookingID = {} AND BandName = '{}'
+        """.format(self._booking_id, self._band_name)
 
 
-
-
-
-# import sqlite3
+# testing while we code
 # connection = sqlite3.connect("concert.db")
-# b1 = Band("TheLegend", 2,)
-# v1 = Venue("RVHS", "BoonLayAVE", 129959)
-# cb1 = ConcertBooking("42931DL", "2019-10-29", "RVHS")
-# bb1 = BandBooking("Crazy Elephant", "42932DL", "1")
-# connection.execute(cb1.delete_record())
+# bb1 = BandBooking(1, "BName", 0)
+# connection.execute(bb1.delete_record())
 # connection.commit()
 # connection.close()
