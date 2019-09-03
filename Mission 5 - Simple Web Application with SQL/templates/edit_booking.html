@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Concert Booking</title>
+    </head>
+    <body>
+        <h1>Edit Concert Booking</h1>
+
+        <form action="{{ url_for('edit_concert_booking', booking_id=c.get_booking_id()) }}", method = "POST">
+
+        <p>Concert Booking ID: </p>
+        <p>{{ c.get_booking_id() }}</p>
+
+        <p>Concert Date: </p>
+        <p>
+            <input type="date" name="date" value="{{ c.get_date() }}">
+        </p>
+        <p>Concert Vanue Name</p>
+        <p>
+        <input type="text" name="venue_name" value="{{ c.get_venue_name() }}">
+        </p>
+        <p>
+            <input type="submit" value="update">
+        </p>
+    </form>
+    </body>
+</html>
